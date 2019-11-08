@@ -1,0 +1,46 @@
+#!/bin/bash
+
+echo
+echo "**************************************************"
+echo "This Script sets up a new development environment!"
+echo "**************************************************"
+echo
+
+read -p "Are you sure you want to continue? (yes/no) "
+if ["$REPLY" != "yes" ]; then
+  exit
+fi
+echo
+
+echo "Creating virtual environment (venv) ..."
+virtualenv --python=python3 ~/venv
+if [ ! $? -eq 0 ]; then
+  exit 1
+fi
+echo "Done"
+
+echo "Activating virtual environment (venv) ..."
+source ~/venv/bin/activate
+if [ "$VIRTUAL_ENV" == ""]; then
+  exit 1
+fi
+echo "Done"
+
+echo "Updating pip ... "
+pip install --upgrade pip
+if [ ! $? -eq 0 ]; then
+   exit 1
+fi
+echo "Done"
+
+echo "Installing prerequesites ..."
+pip install -r requirements.txt
+if [ ! $? -eq 0 ]; then
+  exit 1
+fi
+echo "Done"
+
+echo "Environment Ready!"
+echo
+
+# 2019.11.07-LZ

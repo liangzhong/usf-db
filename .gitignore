@@ -1,0 +1,20 @@
+# Vagrant Settings
+.vagrant
+*.log
+
+# Django Data
+/static
+/media
+/secret.jason
+
+# Python Files
+__python__/
+*.py[cod]
+
+# Virtual Env
+/venv
+
+# temp file dir
+/temp
+
+# 2019.11.08-LZ
