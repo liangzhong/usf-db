@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <h4 class="breadcrumb-item active">Ebooks</h4>
+{% endblock %}
+
+{% block content %}
+
+  <!-- <div class="mb-4">
+    <a href="{% url 'add_book' %}" class="btn btn-primary">Add New Ebooks</a>
+  </div> -->
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>URL</th>
+          <th>Create Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ebook in ebooks %}
+        <tr>
+          <td>
+            <a href="{% url 'ebook_detail' ebook.pk %}"> {{ ebook.title}} </a>
+          </td>
+          <td>
+            {{ ebook.author}}
+          </td>
+          <td>
+            <a href="{{ ebook.url}}", target="_blank">{{ ebook.url}}</a>
+          </td>
+          <td>
+            {{ ebook.create_at}}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

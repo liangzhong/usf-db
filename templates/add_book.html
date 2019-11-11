@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Add a new ebook:{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'home' %}">Ebooks</a></li>
+<li class="breadcrumb-item active">Add a new ebook:</li>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+
+  {% for field in form %}
+    <div class="form-group">
+      {{ field.label_tag }}
+      {% render_field field class="form-control" %}
+    </div>
+  {% endfor %}  
+  <button type="submit" class="btn btn-success">Post</button>
+</form>
+{% endblock %}
