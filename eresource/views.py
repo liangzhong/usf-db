@@ -28,8 +28,14 @@ def browse_book(request, status_filter=None):
     publishers = Publisher.objects.all()
     return render(request, 'browse_book.html', {'ebooks': ebooks, 'publishers': publishers, 'status_filter': status_filter})
 
+def search_results(request):
+  if request.method == 'GET':  
+    author_name=request.GET.get('author')
+    ebooks = Ebook.objects.filter(author__icontains=author_name)
+  return render(request, 'search_result.html', {'ebooks': ebooks})
+
 def search_book(request):
-  raise Http404
+  return render(request, 'search_book.html')
 
 def add_publisher(request):
   if request.method == 'POST':

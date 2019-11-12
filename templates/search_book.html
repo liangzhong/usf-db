@@ -10,15 +10,15 @@
 {% endblock %}
 
 {% block content %}
-<form method="post">
-  {% csrf_token %}
 
-  {% for field in form %}
-    <div class="form-group">
-      {{ field.label_tag }}
-      {% render_field field class="form-control" %}
-    </div>
-  {% endfor %}  
-  <button type="submit" class="btn btn-success">Add</button>
-</form>
+  <div>
+    <form action="{% url 'search_results' %}" method="GET">
+        <label for="author">Author</label>
+      <input name="author" type="text" placeholder="Search..." autofocus>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+  
+ 
+
 {% endblock %}
