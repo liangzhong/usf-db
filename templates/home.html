@@ -1,41 +1,41 @@
 {% extends 'base.html' %}
+{% block  breadcrumb %}
+{% load static %}
 
-{% block breadcrumb %}
-  <h4 class="breadcrumb-item active">Ebooks</h4>
 {% endblock %}
 
 {% block content %}
-
-  <div class="mb-4">
-    <a href="{% url 'add_book' %}" class="btn btn-primary">Add New Ebooks</a>
+<section id="sp-page-title">
+  <!-- <div class="container"> -->
+  <div id="sp-title" class="col-sm-12 col-md-12">
+    <!-- <div class="sp-column "> -->
+    <div style="background-image: url({% static '/images/cover.jpg' %}); background-size: cover">
+      <div class="container">
+        <br>
+        <h1 class="text-white-50">Welcome</h1><br>
+        <span class="text-white-50">By: Liang Zhong</span><br>
+        <span class="text-white-50">2019-11-11</span> <br>
+      </div>
+      <br>
+      <!-- </div> -->
+    </div>
   </div>
+  <!-- </div> -->
+</section>
+<section class="col-sm-12 col-md-12">
+  <!-- <div  id="top-jumbotron" class="jumbotron"> -->
+  <jumbotron class="mb-0">
+    <div>
+      <h4>About</h4>
+      <p>This is a pilot project, using for delivering proof of concepts on designing of library ebook database system.</p>
+    </div>
+    <div>
+      <h4>Thanks</h4>
+      <p>Thank you for interest</p>
+    </div>
+  </jumbotron>
+  <!-- </div> -->
+</section>
 
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>URL</th>
-          <th>Create Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for ebook in ebooks %}
-        <tr>
-          <td>
-            <a href="{% url 'ebook_detail' ebook.pk %}"> {{ ebook.title}} </a>
-          </td>
-          <td>
-            {{ ebook.author}}
-          </td>
-          <td>
-            <a href="{{ ebook.url}}", target="_blank">{{ ebook.url}}</a>
-          </td>
-          <td>
-            {{ ebook.create_at}}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+
 {% endblock %}

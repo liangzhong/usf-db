@@ -5,12 +5,60 @@
 {% endblock %}
 
 {% block breadcrumb %}
-    <li class="breadcrumb-item"><a href="{% url 'home' %}"> EBooks</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'browse_book' %}"> EBooks</a></li>
     <li class="breadcrumb-item active">{{ ebook.title }}</li>
 {% endblock %}
 
 {% block content %}
-{% endblock %}
+
+<div class="card mb-2">
+  <div class="card-body p-3">
+    <div class="row">
+      <div class="col-2">
+        {% load static %}          
+        <img src="{% static '/images/howto.jpg' %}" alt="{{ ebook.title }}" class="img-thumbnail w-100">
+      </div>    
+    
+      <div class="col-10">  
+        <div class="row mb-3"> 
+          <div class="col-4">
+              <div>Title: <br>
+                  <strong class="text-muted">&nbsp;&nbsp;&nbsp;&nbsp;{{ ebook.title }}</strong>
+              </div>
+              <div>Author: <br>
+                  <strong class="text-muted">&nbsp;&nbsp;&nbsp;&nbsp;{{ ebook.author }}</strong>
+              </div>    
+          </div> 
+          <div class="col-4">
+              <div>Publiser: <br>
+                  <strong class="text-muted">&nbsp;&nbsp;&nbsp;&nbsp;{{ ebook.publisher }}</strong>
+              </div>
+              <div>Vendor: <br>
+                  <strong class="text-muted">&nbsp;&nbsp;&nbsp;&nbsp;{{ ebook.vendor }}</strong>
+              </div>    
+          </div> 
+          <div class="col-4 text-right">
+            <div>Create at: <br>
+              <small class="text-muted">{{ ebook.create_at }}</small>
+            </div>
+            <div>URL: <br>
+              <small class="text-muted"><a href="{{ ebook.url }}" target="_blank">{{ ebook.url }}</a></small>
+            </div>
+          </div>
+
+        </div>
+        </div>    
+      </div>
+    </div>  
+  </div>
 </div>
+
+
+{% endblock %}
+
 </body> 
 </html> 
+
+<div>Title:
+    <strong class="text-muted">{{ ebook.title }}</strong>
+</div>  
