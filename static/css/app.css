@@ -1,0 +1,40 @@
+.navbar-brand{
+  font-family: 'Permanent Marker', cursive;
+}
+
+.home-page-title{
+  text-align: center;
+  display: inline;
+}
+
+#sp-header {
+  background-color: #fff;
+  box-shadow: none!important;
+  height: 80px!important;
+  padding: 0px 20px 0px 20px;
+}
+
+#sp-page-title #sp-title {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.font-white{
+  font-size: 14px;
+  color: white ;
+}
+
+.fill {object-fit: fill;}
+.contain {object-fit: contain;}
+.cover {object-fit: cover;}
+.scale-down {object-fit: scale-down;}
+.none {object-fit: none;}
+
+#top-jumbotron {
+  margin-bottom: 0; 
+  margin-top: 0;  
+}
+
+p { 
+  text-indent: 30px;
+}

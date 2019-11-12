@@ -14,4 +14,4 @@ class NewEbookForm(forms.ModelForm):
 class NewPublisherForm(forms.ModelForm):
   class Meta:
     model = Publisher
-    fields = ['name', 'address']    
+    fields = ['name', 'address']

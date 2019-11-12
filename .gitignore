@@ -3,7 +3,7 @@
 *.log
 
 # Django Data
-/static
+#/static
 /media
 /secret.jason
 
