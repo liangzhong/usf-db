@@ -1,15 +1,37 @@
 {% extends 'base.html' %}
 
 {% block breadcrumb %}
-  <li class="breadcrumb-item active">Ebooks</li>
+<li class="breadcrumb-item active">Ebooks</li>
 {% endblock %}
 
 {% block content %}
 
-  <!-- <div class="mb-4">
+<!-- <div class="mb-4">
     <a href="{% url 'add_book' %}" class="btn btn-primary">Add New Ebooks</a>
   </div> -->
+<div class="row" style="position:relative;top:-10px;">
 
+  <div class="col-3" style="padding-top:55px;">
+
+
+    <div class="row">
+      <div class="col">
+        Publisher Filter:<br />
+        <select id="status-filter">
+          <option href="{% url 'browse_book' status_filter=0  %}" value="0"> -- all -- </option>
+          {% for publisher in publishers %}
+          <option href="{% url 'browse_book' status_filter=publisher.pk %}" value="{{publisher.pk}}">
+            {{publisher.name}}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="col-9" style="padding-left:20px;padding-right:10px;">
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -29,7 +51,7 @@
             {{ ebook.author}}
           </td>
           <td>
-            <a href="{{ ebook.url}}", target="_blank">{{ ebook.url}}</a>
+            <a href="{{ ebook.url}}" , target="_blank">{{ ebook.url}}</a>
           </td>
           <td>
             {{ ebook.create_at}}
@@ -38,4 +60,17 @@
         {% endfor %}
       </tbody>
     </table>
-{% endblock %}
+  </div>
+  <script>
+    //--------------------------------------------------------------------------
+    $(document).ready(function () {
+      if (!("{{ status_filter }}" === null)) {
+        $('#status-filter').val("{{ status_filter }}");
+      }
+    });
+    //--------------------------------------------------------------------------
+    $('#status-filter').change(function () {
+      window.location.href = $(this).find(":selected").attr('href');
+    });
+  </script>
+  {% endblock %}

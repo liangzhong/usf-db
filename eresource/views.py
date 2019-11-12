@@ -20,10 +20,16 @@ def ebook_detail(request, pk):
     return render(request, 'ebook_detail.html', {'ebook': ebook})
 
 
-def browse_book(request):
-    ebooks = Ebook.objects.all()
-    return render(request, 'browse_book.html', {'ebooks': ebooks})
+def browse_book(request, status_filter=None):
+    if status_filter=="0":
+      ebooks = Ebook.objects.all()
+    else:
+      ebooks = Ebook.objects.filter(publisher=status_filter)
+    publishers = Publisher.objects.all()
+    return render(request, 'browse_book.html', {'ebooks': ebooks, 'publishers': publishers, 'status_filter': status_filter})
 
+def search_book(request):
+  raise Http404
 
 def add_publisher(request):
   if request.method == 'POST':
