@@ -10,6 +10,7 @@ class Vendor(models.Model):
   def __str__(self):
     return self.name
 
+
 class Publisher(models.Model):
   name = models.CharField(max_length=30, unique=True)
   address = models.CharField(max_length=30, null=True)
@@ -17,9 +18,18 @@ class Publisher(models.Model):
   def __str__(self):
     return self.name
 
+
+class Author(models.Model):
+  name = models.CharField(max_length=30)
+  description = models.CharField(max_length=200, blank=True, null=True)
+
+  def __str__(self):
+    return self.name
+
+
 class Ebook(models.Model):
   title = models.CharField(max_length=30)
-  author = models.CharField(max_length=20)
+  author = models.ManyToManyField(Author)
   url = models.URLField(max_length=100)
   vendor = models.ForeignKey(Vendor, related_name='ebooks', max_length=30, blank=True, null=True, on_delete=models.SET_NULL)
   publisher = models.ForeignKey(Publisher, related_name='ebooks', max_length=30, blank=True, null=True, on_delete=models.SET_NULL)

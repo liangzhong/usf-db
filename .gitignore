@@ -20,4 +20,7 @@ __python__/
 # temp file dir
 /temp
 
+# backup dir
+*bak/
+
 # 2019.11.08-LZ

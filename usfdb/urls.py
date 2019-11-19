@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django import views as django_views
 
 from eresource import views
 
@@ -28,4 +29,5 @@ urlpatterns = [
     path('search_book', views.search_book, name='search_book'),
     path('search_results', views.search_results, name='search_results'),
     path('ebooks/<int:pk>/', views.ebook_detail, name='ebook_detail'),
+    path('jsi18n', django_views.i18n.JavaScriptCatalog.as_view(), name='jsi18n'),
 ]

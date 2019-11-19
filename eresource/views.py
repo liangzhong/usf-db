@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from .forms import NewEbookForm, NewPublisherForm
 
-from .models import Ebook, Publisher, Vendor
+from .models import Ebook, Publisher, Vendor, Author
 
 
 def home(request):
@@ -21,10 +21,10 @@ def ebook_detail(request, pk):
 
 
 def browse_book(request, status_filter=None):
-    if status_filter=="0":
-      ebooks = Ebook.objects.all()
+    if status_filter and status_filter != "0":
+      ebooks = Ebook.objects.filter(publisher=status_filter)   
     else:
-      ebooks = Ebook.objects.filter(publisher=status_filter)
+      ebooks = Ebook.objects.all()
     publishers = Publisher.objects.all()
     return render(request, 'browse_book.html', {'ebooks': ebooks, 'publishers': publishers, 'status_filter': status_filter})
 
@@ -56,6 +56,7 @@ def add_book(request):
       ebook = form.save(commit=False)
       ebook.vendor = Vendor.objects.get(pk=(request.POST.get('vendor')))
       ebook.publisher = Publisher.objects.get(pk=(request.POST.get('publisher')))
+      ebook.author = Author.objects.get(pk=(request.POST.get('author'))) # TODO 
       ebook.create_by = user
       ebook.save()
       # TODO: redirect to the created topic page
